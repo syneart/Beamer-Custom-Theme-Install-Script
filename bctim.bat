@@ -8,18 +8,18 @@ FOR %%b in (!str!) DO (
 	if not !MiKTeXStr!==x!nowStr! set MiKTeXPath=!nowStr!
 )
 if !MiKTeXPath!==nul (
-	cls&echo.&echo.&echo.&echo.&echo ï¿½Ð¥ï¿½ï¿½wï¿½ï¿½ MiKTeX, ï¿½Aï¿½ï¿½ï¿½æ¥»ï¿½wï¿½ï¿½
+	cls&echo.&echo.&echo.&echo.&echo ½Ð¥ý¦w¸Ë MiKTeX, ¦A°õ¦æ¥»¦w¸Ë
 	color E3&set /p=&goto exit
 )
 set MiKTeXPath=!MiKTeXPath:miktex\bin\=!&set MiKTeXPath=!MiKTeXPath:/= !&set MiKTeXPath=!MiKTeXPath:[x86]=(x86)!
 if not exist "!MiKTeXPath!tex\latex\beamer\" (
-	cls&echo.&echo.&echo.&echo.&echo ï¿½Ð¥ï¿½ï¿½wï¿½ï¿½ Beamer, ï¿½Aï¿½ï¿½ï¿½æ¥»ï¿½wï¿½ï¿½
+	cls&echo.&echo.&echo.&echo.&echo ½Ð¥ý¦w¸Ë Beamer, ¦A°õ¦æ¥»¦w¸Ë
 	color E3&set /p=&goto exit
 )
 call:copyFile .\themes, *.sty&call:copyFile .\art, *.jpg
 initexmf --update-fndb >nul
 if !errorlevel!==1 (
-	cls&echo.&echo.&echo.&echo.&echo ï¿½Ð¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sÄ¶ MiKTeX ï¿½Mï¿½ï¿½, ï¿½Aï¿½ï¿½ï¿½ï¿½
+	cls&echo.&echo.&echo.&echo.&echo ½Ð¥ý°±¤î½sÄ¶ MiKTeX ±M®×, ¦A°õ¦æ
 	color 4C&set /p=&goto exit
 )
 cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^!&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
