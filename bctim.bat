@@ -17,7 +17,7 @@ if not exist "!MiKTeXPath!tex\latex\beamer\" (
 	color E3&set /p=&goto exit
 )
 call:copyFile .\themes, *.sty&call:copyFile .\art, *.jpg
-initexmf --update-fndb >nul
+initexmf --admin --update-fndb >nul
 if !errorlevel!==1 (
 	cls&echo.&echo.&echo.&echo.&echo 請先停止編譯 MiKTeX 專案, 再執行
 	color 4C&set /p=&goto exit
@@ -27,7 +27,7 @@ cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^!&color 2A&ping 127.
 :copyFile 
 FOR /R %~1 %%c in (%~2) DO (
 	set themesFile=%%c&set themesFile=!themesFile:%~dp0=!
-	copy "%%c" "!MiKTeXPath!tex\latex\beamer\base\!themesFile!" >nul
+	copy /Y "%%c" "!MiKTeXPath!tex\latex\beamer\base\!themesFile!" >nul
 )
 
 :exit
