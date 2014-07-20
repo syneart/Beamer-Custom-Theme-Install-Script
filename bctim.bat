@@ -1,4 +1,4 @@
-:: Copyright 20140720 by SyneArt <sa@syneart.com>
+:: Copyright 2014 by SyneArt <sa@syneart.com>
 @echo off&cls&title Install&color 0F&mode con cols=38 lines=10
 setlocal enableextensions enabledelayedexpansion
 echo.&echo.&echo.&echo.&echo Install Theme Now ..
@@ -8,18 +8,18 @@ FOR %%b in (!str!) DO (
 	if not !MiKTeXStr!==x!nowStr! set MiKTeXPath=!nowStr!
 )
 if !MiKTeXPath!==nul (
-	cls&echo.&echo.&echo.&echo.&echo éš¢ï•ï¿½æ‘°ï¦ï¿½ MiKTeX, ï¿½ïš—î·“éŠµï—»î¯±æ‘°ï¦ï¿½
+	cls&echo.&echo.&echo.&echo.&echo ½Ð¥ý¦w¸Ë MiKTeX, ¦A°õ¦æ¥»¦w¸Ë
 	color E3&set /p=&goto exit
 )
 set MiKTeXPath=!MiKTeXPath:miktex\bin\=!&set MiKTeXPath=!MiKTeXPath:/= !&set MiKTeXPath=!MiKTeXPath:[x86]=(x86)!
 if not exist "!MiKTeXPath!tex\latex\beamer\" (
-	cls&echo.&echo.&echo.&echo.&echo éš¢ï•ï¿½æ‘°ï¦ï¿½ Beamer, ï¿½ïš—î·“éŠµï—»î¯±æ‘°ï¦ï¿½
+	cls&echo.&echo.&echo.&echo.&echo ½Ð¥ý¦w¸Ë Beamer, ¦A°õ¦æ¥»¦w¸Ë
 	color E3&set /p=&goto exit
 )
 call:copyFile .\themes, *.sty&call:copyFile .\art, *.jpg
 initexmf --admin --update-fndb >nul
 if !errorlevel!==1 (
-	cls&echo.&echo.&echo.&echo.&echo éš¢ï•ï¿½ï¿½î°«è¿«èºåˆ»é™Œ MiKTeX æ’ ïŽ‡ï¿½, ï¿½ïš—î·“éŠµï¿½
+	cls&echo.&echo.&echo.&echo.&echo ½Ð¥ý°±¤î½sÄ¶ MiKTeX ±M®×, ¦A°õ¦æ
 	color 4C&set /p=&goto exit
 )
 cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^!&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
