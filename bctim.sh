@@ -19,7 +19,7 @@ echo "Info: 複製檔案需要權限, 請先輸入密碼 .."
 sudo -v
 if [ $? -eq 1 ]; then
 	clear
-    echo "Error: 未輸入正確密碼, 無法繼續執行"
+	echo "Error: 未輸入正確密碼, 無法繼續執行"
 	sleep 3
 	exit 0
 fi
