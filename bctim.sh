@@ -8,14 +8,24 @@ copyFile () {
 		if [ "${ori##*:}" == "" ]; then
 			DIRPATHS=${ori//:/}
 		else
-			CPPATHS=$DIRPATHS/$ori
-			sudo cp -f $CPPATHS "/usr/share/texmf/tex/latex/beamer/base"${DIRPATHS//$(dirname "$0")/} >/dev/null 2>&1
+			CPPATHS=${DIRPATHS}/$ori
+			sudo cp -f ${CPPATHS} {$installPATH}/beamer/base${DIRPATHS//$(dirname "$0")/} >/dev/null 2>&1
 		fi
 	done
 }
 clear
 echo "Info: Install Theme Now .."
-if [ ! -d "/usr/share/texmf/tex/latex/beamer" ]; then
+OS=`uname -s`
+if [ "${OS}" == "Darwin" ] ; then
+	installPATH=`tlmgr --version | grep 'tlmgr using installation:' | cut -d " " -f 4`
+elif [ "${OS}" == "Linux" ] ; then
+	if [ -f /etc/lsb-release ] ; then
+		installPATH=/usr/share/texmf/tex/latex
+	else
+		installPATH=“”
+	fi
+fi
+if [ ! -d $installPATH/beamer ]; then
 	clear
 	echo "Error: 請先安裝 Beamer, 再執行本安裝"
 	exit 0
