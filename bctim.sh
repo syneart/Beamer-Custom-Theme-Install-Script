@@ -9,7 +9,7 @@ copyFile () {
 			DIRPATHS=${ori//:/}
 		else
 			CPPATHS=${DIRPATHS}/$ori
-			sudo cp -f ${CPPATHS} {$installPATH}/beamer/base${DIRPATHS//$(dirname "$0")/} >/dev/null 2>&1
+			sudo cp -f ${CPPATHS} ${installPATH}/beamer/base${DIRPATHS//$(dirname "$0")/} >/dev/null 2>&1
 		fi
 	done
 }
