@@ -13,7 +13,7 @@ Windows
 
 --
 
-Linux (Ubuntu)
+Linux (Ubuntu) / OS X (Mac OS)
 
 1 ) 放置 bctim.sh 與 themes/ art/ 同目錄 [themes/ art/ 為 Beamer 自訂 Theme 的預設資料夾]
 
