@@ -3,7 +3,7 @@
 copyFile () {
 	DIRPATHS=null
 	CPPATHS=null
-	for lori in `ls -R /dev/null $(dirname "$0")/$1 2>/dev/null`
+	for lori in `ls -R /dev/null $(dirname "$0")/$1`
 	do
 		if [ "${lori##*:}" == "" ]; then
 			DIRPATHS=${lori//:/}
