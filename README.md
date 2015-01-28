@@ -20,3 +20,7 @@ Linux (Ubuntu) / OS X (Mac OS)
 2 ) 在 Terminal 下指令： `chmod u+x <檔案位在的目錄>/bctim.sh`
 
 3 ) 執行: `./bctim.sh` & enjoy it!
+
+## License
+
+This program released under [MIT License](LICENSE).
