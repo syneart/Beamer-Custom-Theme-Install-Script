@@ -11,7 +11,8 @@ if !MiKTeXPath!==nul (
 	cls&echo.&echo.&echo.&echo.&echo 請先安裝 MiKTeX, 再執行本安裝
 	color E3&set /p=&goto exit
 )
-set MiKTeXPath=!MiKTeXPath:miktex\bin\=!&set MiKTeXPath=!MiKTeXPath:x64\=!&set MiKTeXPath=!MiKTeXPath:/= !&set MiKTeXPath=!MiKTeXPath:[x86]=(x86)!
+set MiKTeXPath=!MiKTeXPath:miktex\bin\=!&set MiKTeXPath=!MiKTeXPath:x64\=!
+set MiKTeXPath=!MiKTeXPath:/= !&set MiKTeXPath=!MiKTeXPath:[x86]=(x86)!
 if not exist "!MiKTeXPath!tex\latex\beamer\" (
 	cls&echo.&echo.&echo.&echo.&echo 請先安裝 Beamer, 再執行本安裝
 	color E3&set /p=&goto exit
