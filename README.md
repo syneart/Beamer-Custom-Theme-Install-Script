@@ -1,23 +1,23 @@
 bctim
 =====
 
-Script For Beamer custom theme install on MikTex (LaTex)
+Script For Beamer custom theme install on TeXLive and MiKTeX. (LaTeX)
 
-使用方式：
+How to Use：
 
-Windows
+put bctim script file with "themes\" and  "art\" in the same directory 
+["themes\" and "art\" is Beamer custom Theme default folder]
 
-1 ) 放置 bctim.bat 與 themes\ art\ 同目錄 [themes\ art\ 為 Beamer 自訂 Theme 的預設資料夾]
+### In Windows
 
-2 ) 執行 & enjoy it!
+Run bctim batch file & enjoy it!
 
---
+### In Linux (Ubuntu) / OS X (Mac OS)
 
-Linux (Ubuntu) / OS X (Mac OS)
+You can use Terminal , and type (change directory to bash file location)
 
-1 ) 放置 bctim.sh 與 themes/ art/ 同目錄 [themes/ art/ 為 Beamer 自訂 Theme 的預設資料夾]
+`$ bash ./bctim.sh`
 
-2 ) 在 Terminal 下指令： `bash <檔案位在的目錄>/bctim.sh` & enjoy it!
 
 ## License
 
