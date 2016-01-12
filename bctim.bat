@@ -1,7 +1,7 @@
 :: Copyright 2014 by SyneArt <sa@syneart.com>
-@echo off&cls&title Install&color 0F&mode con cols=38 lines=10
+@echo off&cls&title InstallTheme&color 0F&mode con cols=38 lines=10
 setlocal enableextensions enabledelayedexpansion
-echo.&echo.&echo.&echo.&echo Install Theme Now ..
+echo.&echo.&echo.&echo.&echo Install Theme Now , Please Wait .. 
 set texPath=nul
 REM TeXLive
 call tlmgr --version 1>nul 2>&1 && (
@@ -34,7 +34,7 @@ if !errorlevel!==1 (
 	cls&echo.&echo.&echo.&echo.&echo Please stop LaTeX Compile first.
 	color 4C&set /p=&goto exit
 )
-cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^!&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
+cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^! :-P&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
 
 :copyFile 
 FOR /R %~1 %%c in (%~2) DO (
