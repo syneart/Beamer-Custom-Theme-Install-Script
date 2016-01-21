@@ -37,7 +37,10 @@ if !texPath!==nul (
 	color E3&set /p=&goto exit
 )
 
-cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^! :-P&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
+if !errorlevel!==0 (
+	cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^! :-P&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
+)
+goto exit
 
 :checkError
 if !errorlevel!==1 (
