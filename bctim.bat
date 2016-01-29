@@ -8,28 +8,25 @@ REM For TeXLive
 call tlmgr --version 1>nul 2>&1 && (
 	for /f "tokens=1* delims=:" %%a in ('tlmgr --version') do (
 		if "%%a"=="tlmgr using installation" (
-			set texPath="%%b"&set texPath=!texPath:" =!
-			set texPath=!texPath:"=!
+			set texPath=#%%b&set texPath=!texPath:# =!\texmf-dist\tex\latex\beamer\
 		)
 	)
-	set texPath=!texPath!\texmf-dist\tex\latex\beamer\
 	call:copyFile .\themes, *.sty&call:copyFile .\art, *.jpg
-	if !errorlevel!==1 (call:checkCopyError&goto exit)
+	if !errorlevel!==1 (call:pushCopyError&goto exit)
 	texhash >nul 2>&1
-	if !errorlevel!==1 (call:checkCompileError&goto exit)
+	if !errorlevel!==1 (call:pushCompileError&goto exit)
 )
 
 REM For MiKTeX
 call initexmf --version 1>nul 2>&1 && (
-	for /f "tokens=1* delims=." %%a in ('findexe initexmf.exe') do (
-		echo %%a | FINDSTR "initexmf" 1>nul 2>&1 && set texPath=%%a
+	for /f "tokens=1* delims=: " %%a in ('initexmf --report') do (
+		if exist %%b\tex\latex\beamer\base\ set texPath=%%b\tex\latex\beamer\base\
 	)
-	set texPath=!texPath:\miktex\bin\initexmf=!
-	set texPath=!texPath!\tex\latex\beamer\base\
+	if !texPath!==nul (call:pushBeamerError&goto exit)
 	call:copyFile .\themes, *.sty&call:copyFile .\art, *.jpg
-	if !errorlevel!==1 (call:checkCopyError&goto exit)
+	if !errorlevel!==1 (call:pushCopyError&goto exit)
 	initexmf --admin --update-fndb >nul 2>&1
-	if !errorlevel!==1 (call:checkCompileError&goto exit)
+	if !errorlevel!==1 (call:pushCompileError&goto exit)
 )
 
 if !texPath!==nul (
@@ -39,11 +36,15 @@ if !texPath!==nul (
 
 cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^! :-P&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
 
-:checkCopyError
-cls&echo.&echo.&echo.&echo.&echo LaTeX Path Error, please feedback.
+:pushBeamerError
+cls&echo.&echo.&echo.&echo.&echo Please install Beamer on MiKTeX first.
+color E3&set /p=&goto exit
+
+:pushCopyError
+cls&echo.&echo.&echo.&echo.&echo Not Found Path, please feedback.
 color 4C&set /p=&goto exit
 
-:checkCompileError
+:pushCompileError
 cls&echo.&echo.&echo.&echo.&echo Please stop LaTeX Compile first.
 color 4C&set /p=&goto exit
 
