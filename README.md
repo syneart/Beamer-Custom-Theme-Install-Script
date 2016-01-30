@@ -1,4 +1,4 @@
-bctim
+Beamer-Custom-Theme-Install-Script
 =====
 
 Script For Beamer custom theme install on TeXLive and MiKTeX. (LaTeX)
@@ -10,13 +10,13 @@ Put bctim script file with "themes\" and  "art\" in the same directory<br />
 
 ### In Windows
 
-Run bctim batch file & enjoy it!
+Run batch file & enjoy it!
 
 ### In Linux (Ubuntu) / OS X (Mac OS)
 
 You can use Terminal , and type (change directory to bash file location)
 
-`$ bash ./bctim.sh`
+`$ bash ./Beamer_Custom_Theme_Install_Script.sh`
 
 
 ## License
