@@ -5,8 +5,8 @@ Script For Beamer custom theme install on TeXLive and MiKTeX. (LaTeX)
 
 ###How to Use：
 
-Put bctim script file with "themes\" and  "art\" in the same directory<br />
-["themes\" and "art\" is Beamer custom Theme default folder]
+Put script file with "themes\" and  "art\" in the same directory<br />
+["themes\" and "art\" is Beamer theme default folder]
 
 ### In Windows
 
