@@ -24,10 +24,6 @@ copyFile () {
 	done
 }
 
-pushBeamerError () {
-	echo "ERROR: Please install Beamer on MiKTeX first."
-}
-
 pushCopyError () {
 	echo "INFO: Not Found Path, please feedback."
 }
@@ -37,7 +33,7 @@ pushCompileError () {
 }
 
 pushProgress () {
-	echo "INFO: Installing Theme , Wait .. [ $1 of 4 ]"
+	echo "INFO: Installing Theme , Wait .. [ $1 of 2 ]"
 }
 
 texPath=/dev/null
@@ -49,16 +45,7 @@ pushProgress 1 & (tlmgr --version) >/dev/null 2>&1 && {
 	pushProgress 2 & sudo texhash >/dev/null 2>&1
 	if [ $? -eq 1 ]; then pushCompileError; exit; fi
 }
-
-# For MiKTeX
-pushProgress 3 & (initexmf --version) >/dev/null 2>&1 && {
-	$texPath=`initexmf --report | grep '?' | cut -d " " -f 4`/usr/share/texmf/tex/latex/beamer/base/
-	if [ $? -eq 1 ]; then pushBeamerError; exit; fi
-	copyFile themes .sty & copyFile art .jpg
-	if [ $? -eq 1 ]; then pushCopyError; exit; fi
-	pushProgress 4 & sudo initexmf --admin --update-fndb >/dev/null 2>&1
-	if [ $? -eq 1 ]; then pushCompileError; exit; fi
-}
+# Not Support MiKTeX
 
 if [ ! -d $texPath ]; then
 	clear
