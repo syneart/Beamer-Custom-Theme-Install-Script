@@ -29,26 +29,30 @@ call:pushProgress 3 & call initexmf --version 1>nul 2>&1 && (
 )
 
 if !texPath!==nul (
-	cls&echo.&echo.&echo.&echo.&echo Please install LaTeX first.
+	call:echo "Please install LaTeX first."
 	color E3&set /p=&goto exit
 )
 
-cls&echo.&echo.&echo.&echo.&echo Install Theme Successful ^^! :-P&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
+call:echo "Install Theme Successful (^^)"&color 2A&ping 127.0.0.1 -n 3 >nul&goto exit
 
 :pushBeamerError
-cls&echo.&echo.&echo.&echo.&echo Please install Beamer on MiKTeX first.
+call:echo "Please install Beamer on MiKTeX first."
 color E3&set /p=&goto exit
 
 :pushCopyError
-cls&echo.&echo.&echo.&echo.&echo Not Found Path, please feedback.
+call:echo "Not Found Path, please feedback."
 color 4C&set /p=&goto exit
 
 :pushCompileError
-cls&echo.&echo.&echo.&echo.&echo Please stop LaTeX Compile first.
+call:echo "Please stop LaTeX Compile first."
 color 4C&set /p=&goto exit
 
 :pushProgress
-cls&echo.&echo.&echo.&echo.&echo Installing Theme , Wait .. [ %~1 of 4 ]
+call:echo "Installing Theme , Wait .. [ %~1 of 4 ]"
+goto exit
+
+:echo
+cls&echo.&echo.&echo.&echo.&echo %~1
 goto exit
 
 :copyFile
