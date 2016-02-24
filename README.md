@@ -12,7 +12,7 @@ Put script file with "themes\" and  "art\" in the same directory<br />
 
 Run batch file & enjoy it!
 
-### In Linux (Ubuntu) / OS X (Mac OS)
+### In Unix
 
 You can use Terminal , and type (change directory to bash file location)
 
