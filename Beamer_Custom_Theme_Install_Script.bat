@@ -7,12 +7,15 @@ REM For TeXLive
 call:pushProgress 1 & call tlmgr --version 1>nul 2>&1 && (
 	for /f "tokens=1* delims=:" %%a in ('tlmgr --version') do (
 		if "%%a"=="tlmgr using installation" (
+			set rootTexPath=%%b
 			set texPath=#%%b&set texPath=!texPath:# =!\texmf-dist\tex\latex\beamer\
 		)
 	)
 	call:copyFile .\themes, *.sty&call:copyFile .\art, *.jpg
 	if !errorlevel!==1 (call:pushCopyError&goto exit)
-	call:pushProgress 2 & texhash >nul 2>&1
+	for /f "tokens=2* delims=:b" %%a in ('tlmgr search --file texhash.exe') do (
+		call:pushProgress 2 & call !rootTexPath!/b%%a >nul 2>&1
+	)
 	if !errorlevel!==1 (call:pushCompileError&goto exit)
 )
 
@@ -60,5 +63,4 @@ FOR /R %~1 %%c in (%~2) DO (
 	set themesFile=%%c&set themesFile=!themesFile:%~dp0=!
 	copy /Y "%%c" "!texPath!!themesFile!" 1>nul 2>&1
 )
-
 :exit
