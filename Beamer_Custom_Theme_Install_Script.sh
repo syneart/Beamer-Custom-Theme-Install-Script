@@ -8,6 +8,7 @@ if [ $? -eq 1 ]; then
 	echo "Error: 未輸入正確密碼, 無法繼續執行"
 	exit 0
 fi
+source /etc/profile
 clear
 
 copyFile () {
