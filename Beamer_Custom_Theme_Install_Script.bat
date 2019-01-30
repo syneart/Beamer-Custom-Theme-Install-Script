@@ -61,6 +61,6 @@ goto exit
 :copyFile
 FOR /R %~1 %%c in (%~2) DO (
 	set themesFile=%%c&set themesFile=!themesFile:%~dp0=!
-	copy /Y "%%c" "!texPath!!themesFile!" 1>nul 2>&1
+	echo F | xcopy /Y "%%c" "!texPath!!themesFile!" 1>nul 2>&1
 )
 :exit
