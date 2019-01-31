@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2014-2016 by SyneArt <sa@syneart.com>
+# Copyright 2014-2019 by SyneArt <sa@syneart.com>
 clear
 echo "INFO: 複製檔案需要權限, 請先輸入密碼 .."
 sudo -v
@@ -12,16 +12,10 @@ source /etc/profile
 clear
 
 copyFile () {
-	DIRPATHS=/dev/null
-	CPPATHS=/dev/null
-	for lori in `ls -R /dev/null $(dirname "$0")/$1`
+	for lori in `find $(dirname "$0")/$1/ -name *$2`
 	do
-		if [ "${lori##*:}" == "" ]; then
-			DIRPATHS=${lori//:/}
-		else
-			CPPATHS=$DIRPATHS/$lori
-			sudo cp -f $CPPATHS $texPath/${DIRPATHS//$(dirname "$0")/} >/dev/null 2>&1
-		fi
+		themesPath=$(dirname $texPath${lori/$(dirname "$0")})/
+		sudo mkdir -p ${themesPath}; sudo cp ${lori} ${themesPath} >/dev/null 2>&1
 	done
 }
 
